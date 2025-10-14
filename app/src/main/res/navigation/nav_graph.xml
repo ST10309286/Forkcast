@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/splashFragment">
+
+    <!-- Splash Fragment -->
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.forkcast.SplashFragment"
+        android:label="Splash"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_splash_to_auth"
+            app:destination="@id/authFragment" />
+        <action
+            android:id="@+id/action_splash_to_home"
+            app:destination="@id/homeFragment" />
+    </fragment>
+
+    <!-- Auth Fragment -->
+    <fragment
+        android:id="@+id/authFragment"
+        android:name="com.example.forkcast.AuthFragment"
+        android:label="Auth"
+        tools:layout="@layout/fragment_auth">
+        <action
+            android:id="@+id/action_auth_to_login"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_auth_to_register"
+            app:destination="@id/registerFragment" />
+    </fragment>
+
+    <!-- Login Fragment -->
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.forkcast.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_login_to_home"
+            app:destination="@id/homeFragment" />
+    </fragment>
+
+    <!-- Register Fragment -->
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.forkcast.RegisterFragment"
+        android:label="Register"
+        tools:layout="@layout/fragment_register">
+        <action
+            android:id="@+id/action_register_to_login"
+            app:destination="@id/loginFragment" />
+    </fragment>
+
+    <!-- Home Fragment -->
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.forkcast.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_home_to_planner"
+            app:destination="@id/plannerFragment" />
+        <action
+            android:id="@+id/action_home_to_favorites"
+            app:destination="@id/favoritesFragment" />
+        <action
+            android:id="@+id/action_home_to_shoppingList"
+            app:destination="@id/shoppingListFragment" />
+        <action
+            android:id="@+id/action_home_to_profile"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_home_to_explore"
+            app:destination="@id/exploreFragment" />
+    </fragment>
+
+    <!-- Planner Fragment -->
+    <fragment
+        android:id="@+id/plannerFragment"
+        android:name="com.example.forkcast.PlannerFragment"
+        android:label="Planner"
+        tools:layout="@layout/fragment_planner">
+        <action
+            android:id="@+id/action_planner_to_home"
+            app:destination="@id/homeFragment" />
+    </fragment>
+
+    <!-- Favorites Fragment -->
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.example.forkcast.FavoritesFragment"
+        android:label="Favorites"
+        tools:layout="@layout/fragment_favorites">
+        <action
+            android:id="@+id/action_favorites_to_home"
+            app:destination="@id/homeFragment" />
+    </fragment>
+
+    <!-- Shopping List Fragment -->
+    <fragment
+        android:id="@+id/shoppingListFragment"
+        android:name="com.example.forkcast.ShoppingListFragment"
+        android:label="Shopping List"
+        tools:layout="@layout/fragment_shopping_list">
+        <action
+            android:id="@+id/action_shoppingList_to_home"
+            app:destination="@id/homeFragment" />
+    </fragment>
+
+    <!-- Profile Fragment -->
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.forkcast.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profile_to_home"
+            app:destination="@id/homeFragment" />
+    </fragment>
+
+    <!-- Explore Fragment -->
+    <fragment
+        android:id="@+id/exploreFragment"
+        android:name="com.example.forkcast.ExploreFragment"
+        android:label="Explore"
+        tools:layout="@layout/fragment_explore">
+        <action
+            android:id="@+id/action_explore_to_home"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_explore_to_recipeDetail"
+            app:destination="@id/recipeDetailFragment" />
+    </fragment>
+
+    <!-- Recipe Detail Fragment -->
+    <fragment
+        android:id="@+id/recipeDetailFragment"
+        android:name="com.example.forkcast.RecipeDetailFragment"
+        android:label="Recipe Detail"
+        tools:layout="@layout/fragment_recipe_detail">
+        <argument
+            android:name="recipeId"
+            app:argType="integer" />
+    </fragment>
+
+</navigation>
