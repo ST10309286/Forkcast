@@ -19,7 +19,7 @@ class SplashFragment : Fragment() {
     private val navigateRunnable = Runnable {
         if (isAdded && view != null) {
             try {
-                findNavController().navigate(R.id.action_splash_to_home)
+                findNavController().navigate(R.id.action_splash_to_auth)
             } catch (e: IllegalStateException) {
                 e.printStackTrace()
             }
