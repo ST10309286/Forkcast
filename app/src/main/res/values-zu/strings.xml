@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home">Ikhaya</string>
+    <string name="planner">Uhlelo Lokudla</string>
+    <string name="favorites">Okuthandwayo</string>
+    <string name="shopping_list">Uhlu Lokuthenga</string>
+    <string name="profile">Iphrofayela</string>
+    <string name="explore">Hlola</string>
+
+    <string name="clear_all_plans">Sula Zonke Izinhlelo</string>
+
+    <string name="recipe_image">Isithombe Sokudla</string>
+    <string name="recipe_title_placeholder">Isihloko Sokudla</string>
+    <string name="instructions">Imiyalelo</string>
+    <string name="loading">Ilayisha...</string>
+    <string name="add_to_shopping_list">Engeza Kuhlu Lokuthenga</string>
+    <string name="add_to_favorites">Engeza Kokuthandwayo</string>
+
+    <string name="favorites_empty">Awukakhethe ukudla okuthandayo okwamanje</string>
+
+    <string name="welcome">Siyakwamukela ku-ForkCast</string>
+
+    <string name="profile_picture">Isithombe sephrofayili</string>
+    <string name="profile_name_placeholder">Igama lakho</string>
+    <string name="select_language">Khetha ulimi</string>
+
+</resources>
