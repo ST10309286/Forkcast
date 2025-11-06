@@ -17,7 +17,7 @@
             android:id="@+id/tvWelcome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Welcome to ForkCast 🍴"
+            android:text="@string/welcome"
             android:textSize="22sp"
             android:textStyle="bold"
             android:layout_marginBottom="16dp" />
@@ -34,13 +34,13 @@
             android:id="@+id/btnExplore"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Explore Recipes" />
+            android:text="@string/explore" />
 
         <Button
             android:id="@+id/btnPlanner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Go to Planner"
+            android:text="@string/planner"
             android:layout_marginTop="12dp" />
 
     </LinearLayout>

@@ -58,7 +58,7 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.forkcast.HomeFragment"
-        android:label="Home"
+        android:label="@string/home"
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_home_to_planner"
@@ -81,7 +81,7 @@
     <fragment
         android:id="@+id/plannerFragment"
         android:name="com.example.forkcast.PlannerFragment"
-        android:label="Planner"
+        android:label="@string/planner"
         tools:layout="@layout/fragment_planner">
         <action
             android:id="@+id/action_planner_to_home"
@@ -92,7 +92,7 @@
     <fragment
         android:id="@+id/favoritesFragment"
         android:name="com.example.forkcast.FavoritesFragment"
-        android:label="Favorites"
+        android:label="@string/favorites"
         tools:layout="@layout/fragment_favorites">
         <action
             android:id="@+id/action_favorites_to_home"
@@ -103,7 +103,7 @@
     <fragment
         android:id="@+id/shoppingListFragment"
         android:name="com.example.forkcast.ShoppingListFragment"
-        android:label="Shopping List"
+        android:label="@string/shopping_list"
         tools:layout="@layout/fragment_shopping_list">
         <action
             android:id="@+id/action_shoppingList_to_home"
@@ -114,7 +114,7 @@
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.forkcast.ProfileFragment"
-        android:label="Profile"
+        android:label="@string/profile"
         tools:layout="@layout/fragment_profile">
         <action
             android:id="@+id/action_profile_to_home"
@@ -125,7 +125,7 @@
     <fragment
         android:id="@+id/exploreFragment"
         android:name="com.example.forkcast.ExploreFragment"
-        android:label="Explore"
+        android:label="@string/explore"
         tools:layout="@layout/fragment_explore">
         <action
             android:id="@+id/action_explore_to_home"

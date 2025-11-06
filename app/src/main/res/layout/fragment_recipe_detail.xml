@@ -6,7 +6,8 @@
     android:padding="16dp"
     android:scrollbars="vertical"
     android:fadeScrollbars="false"
-    android:scrollbarStyle="insideOverlay">
+    android:scrollbarStyle="insideOverlay"
+    android:background="@color/sage">
 
     <LinearLayout
         android:orientation="vertical"
@@ -37,15 +38,26 @@
             android:lineSpacingExtra="4dp"
             android:textColor="@android:color/black"/>
 
+        <Button
+            android:id="@+id/btnFavorite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/add_to_favorites"
+            android:layout_marginTop="12dp"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@color/orange"
+           />
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/addToShoppingListButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add to Shopping List"
+            android:text="@string/add_to_shopping_list"
             android:layout_marginTop="16dp"
             android:textAllCaps="false"
             android:padding="12dp"
             app:cornerRadius="8dp"
+            android:backgroundTint="@color/navy"
             android:textColor="@android:color/white"/>
 
     </LinearLayout>

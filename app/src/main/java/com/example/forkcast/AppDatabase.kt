@@ -6,11 +6,13 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import java.security.MessageDigest
 
-@Database(entities = [User::class, ShoppingItem::class , MealPlan::class], version = 3)
+@Database(entities = [User::class, ShoppingItem::class, MealPlan::class, FavoriteMeal::class], version = 4)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
     abstract fun shoppingListDao(): ShoppingListDao
     abstract fun mealPlanDao(): MealPlanDao
+
+    abstract fun favoriteMealDao(): FavoriteMealDao
 
 
     companion object {

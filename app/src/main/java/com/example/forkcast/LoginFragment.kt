@@ -41,13 +41,20 @@ class LoginFragment : Fragment() {
             viewLifecycleOwner.lifecycleScope.launch {
                 val success = viewModel.loginUser(email, password)
                 withContext(Dispatchers.Main) {
+
                     if (success) {
-                        Toast.makeText(requireContext(), "Login successful!", Toast.LENGTH_SHORT).show()
-                        // Navigate to HomeFragment
-                        findNavController().navigate(R.id.action_login_to_home)
-                    } else {
-                        Toast.makeText(requireContext(), "Invalid credentials", Toast.LENGTH_SHORT).show()
-                    }
+                    // Save user info
+                    val prefs = requireContext().getSharedPreferences("user_prefs", 0)
+                    prefs.edit()
+                        .putString("email", email)
+                        .putString("name", email.substringBefore("@")) // or fetch from DB if you store usernames
+                        .apply()
+
+                    Toast.makeText(requireContext(), "Login successful!", Toast.LENGTH_SHORT).show()
+                    findNavController().navigate(R.id.action_login_to_home)
+                } else {
+                    Toast.makeText(requireContext(), "Invalid credentials", Toast.LENGTH_SHORT).show()
+                }
                 }
             }
         }

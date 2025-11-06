@@ -10,6 +10,10 @@ interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertUser(user: User)
 
+    @Query("SELECT * FROM Users WHERE name = :name LIMIT 1")
+    suspend fun getUserByUsername(name: String): User?
+
+
     @Query("SELECT * FROM users WHERE email = :email LIMIT 1")
     suspend fun getUserByEmail(email: String): User?
 }

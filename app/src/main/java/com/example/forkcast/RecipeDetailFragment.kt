@@ -18,6 +18,8 @@ class RecipeDetailFragment : Fragment() {
     private var _binding: FragmentRecipeDetailBinding? = null
     private val binding get() = _binding!!
     private lateinit var db: AppDatabase
+    private var isFavorite = false
+    private var currentMealId: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,29 +27,42 @@ class RecipeDetailFragment : Fragment() {
     ): View {
         _binding = FragmentRecipeDetailBinding.inflate(inflater, container, false)
 
-        // Initialize Room database
+        // Initialize Room DB
         db = Room.databaseBuilder(
             requireContext(),
             AppDatabase::class.java,
-            "app_database"
+            "forkcast_db"
         ).build()
 
-        // Get recipe ID from navigation arguments
+        // Get recipe ID
         val recipeId = RecipeDetailFragmentArgs.fromBundle(requireArguments()).recipeId.toString()
+        currentMealId = recipeId
 
         lifecycleScope.launch {
             try {
-                // Fetch recipe details from TheMealDB API
+                // Fetch from API
                 val response = RetrofitInstance.api.getMealDetails(recipeId)
                 val mealData = response?.meals?.firstOrNull()
 
                 if (mealData != null) {
-                    // Bind data to UI
+                    // Bind UI
                     binding.recipeTitle.text = mealData.strMeal
                     binding.recipeInstructions.text = mealData.strInstructions
                     Glide.with(requireContext()).load(mealData.strMealThumb).into(binding.recipeImage)
 
-                    // Add ingredients to shopping list
+                    // ✅ Check if meal is favorite
+                    val favorite = db.favoriteMealDao().getFavoriteById(mealData.idMeal)
+                    isFavorite = favorite != null
+                    updateFavoriteButtonText()
+
+                    // ✅ Handle Favorite button
+                    binding.btnFavorite.setOnClickListener {
+                        lifecycleScope.launch {
+                            toggleFavorite(mealData)
+                        }
+                    }
+
+                    // ✅ Handle Add to Shopping List
                     binding.addToShoppingListButton.setOnClickListener {
                         lifecycleScope.launch {
                             try {
@@ -69,17 +84,9 @@ class RecipeDetailFragment : Fragment() {
                                     )
                                 }
 
-                                Toast.makeText(
-                                    requireContext(),
-                                    "Added to shopping list!",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                Toast.makeText(requireContext(), "Added to shopping list!", Toast.LENGTH_SHORT).show()
                             } catch (e: Exception) {
-                                Toast.makeText(
-                                    requireContext(),
-                                    "Failed to add: ${e.message}",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                Toast.makeText(requireContext(), "Failed to add: ${e.message}", Toast.LENGTH_SHORT).show()
                             }
                         }
                     }
@@ -94,6 +101,23 @@ class RecipeDetailFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    private suspend fun toggleFavorite(meal: com.example.forkcast.Meal) {
+        val dao = db.favoriteMealDao()
+        if (isFavorite) {
+            dao.removeFavorite(FavoriteMeal(meal.idMeal, meal.strMeal, meal.strMealThumb))
+            Toast.makeText(requireContext(), "Removed from favorites", Toast.LENGTH_SHORT).show()
+        } else {
+            dao.addFavorite(FavoriteMeal(meal.idMeal, meal.strMeal, meal.strMealThumb))
+            Toast.makeText(requireContext(), "Added to favorites", Toast.LENGTH_SHORT).show()
+        }
+        isFavorite = !isFavorite
+        updateFavoriteButtonText()
+    }
+
+    private fun updateFavoriteButtonText() {
+        binding.btnFavorite.text = if (isFavorite) "Remove from Favorites" else "Add to Favorites"
     }
 
     override fun onDestroyView() {
