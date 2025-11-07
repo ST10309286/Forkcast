@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SplashFragment">
+    tools:context=".SplashFragment"
+    android:background="@color/navy">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -15,7 +16,8 @@
         <ImageView
 
             android:layout_width="120dp"
-            android:layout_height="120dp" />
+            android:layout_height="120dp"
+            />
 
         <TextView
             android:text="Plan your plate, one day at a time"
